@@ -17,7 +17,7 @@ using SpeechA.Properties;
  * 
  */
 // ReSharper disable InconsistentNaming
-namespace SpeechA
+namespace SpeechA.Nodes
 {
     internal class CommandNode
     {

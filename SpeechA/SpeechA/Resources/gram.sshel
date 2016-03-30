@@ -1,6 +1,6 @@
 exit	> Exit&INT|EXIT
 test 	> Succeeded.
-Hi	> Hi, Wolfger
+Hi	> Hi!
 
 good{
 	job 	> Thank you.
@@ -47,7 +47,6 @@ ping{
 	google{
 		dns		> Pinging google dns.. &PROC(8.8.8.8)|ping
 	}
-	
 }
 What{
 	does{

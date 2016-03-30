@@ -1,8 +1,9 @@
 ﻿/*
  *  Todo:
- *          - Stop listening to self.
- *          - List with stuff that needst to be spoken, with priority queue.
+ *          - Stop listening to self. (filter of some kind?)
+ *          - List with stuff that need to be spoken, with priority queue.
  *          - GetVariable() method
+ *          - Dynamically add grammar trough speaking
  *          - TCP messages (instead of only typing in box) : Ok
  */
 
@@ -25,12 +26,15 @@ using System.IO.Pipes;
 using System.Text.RegularExpressions;
 using System.Windows.Forms.VisualStyles;
 using SpeechA.Properties;
+
+using SpeechA.Nodes;
+
 // ReSharper disable InconsistentNaming
 namespace SpeechA
 {
     public partial class SpeechA : Form
     {
-        String GRAMPATH = @"C:\Users\Wolfger\Documents\Visual Studio 2013\Projects\SpeechA\SpeechA\SpeechA\Resources\gram.sshel";
+        String GRAMPATH = @"Resources\gram.sshel";
         String EGPATH = @"C:\Program Files (x86)\EventGhost\EventGhost";
         char[] ENTERCHAR = {'\n', '\r'};
 
@@ -92,7 +96,7 @@ namespace SpeechA
         }
         private void txtIn_TextChanged(object sender, EventArgs e)
         {
-            
+            //Act when pressed enter in textbox, clear the textbox
             String st = txtIn.Text;
             if (st.ToLower().Contains(ENTERCHAR[0]) | st.ToLower().Contains(ENTERCHAR[0]))
             {
@@ -205,6 +209,7 @@ namespace SpeechA
         }
         /*
          * Internal commands: commands which must be executed by this application.
+         * Todo: Isolate behaviour in seperate classes
          */ 
         private void INT_Execute(String execution)
         {

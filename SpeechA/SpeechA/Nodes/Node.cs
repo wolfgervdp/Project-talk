@@ -9,9 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
-
+/*
+ * Todo: get rid of the magic strings somehow
+ */
 // ReSharper disable InconsistentNaming
-namespace SpeechA
+namespace SpeechA.Nodes
 {
     class Node 
     {
