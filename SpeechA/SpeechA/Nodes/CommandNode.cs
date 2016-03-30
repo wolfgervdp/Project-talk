@@ -27,24 +27,36 @@ namespace SpeechA.Nodes
         public readonly String[][] args;
         public readonly String[] action;
 
+
+        Regex withPar = new Regex(@"[&%]+(.*)\((.*)\)\|(.*)%?");
+        Regex withoutPar = new Regex(@"[&%]?(.*)\|(.*)%?");
+
         public CommandNode(String actionString)
         {
 
-            speech = actionString.Split('&')[0].Trim('&');
-            String[] commands = (new Regex(@"&.*$")).Match(actionString).Value.Trim('$').Split('%');
+            speech = actionString.Split('&')[0];
+            String[] commands = (new Regex(@"&.*$")).Match(actionString).Value.Split('%');
             action = new String[commands.Length];
             args = new String[commands.Length][];
             type = new String[commands.Length];
+            
             for (int i = 0; i < commands.Length; i++)
             {
-                String temp = (new Regex(@"^.*\|")).Match(commands[i]).Value.Trim(new char[] {'&', '|'}); //Get value in between & and |, and trim & and |
-                type[i] = temp.Split('(')[0];
-                if (temp.Split('(').Length > 1)
+                if (commands[i].Contains("("))
                 {
-                    args[i] = temp.Split('(')[1].Trim(new char[] {'(', ')'}).Split(',');
+                    Match m = withPar.Match(commands[i]);
+                    type[i] = m.Groups[1].Value;
+                    args[i] = m.Groups[2].Value.Split(',');
+                    action[i] = m.Groups[3].Value;
+                    
                 }
-                temp = (new Regex(@"\|.*$")).Match(commands[i]).Value;
-                action[i] = temp.Trim('|');
+                else
+                {
+                    Match m = withoutPar.Match(commands[i]);
+                    type[i] = m.Groups[1].Value;
+                    action[i] = m.Groups[2].Value;
+                }
+                    
             }
 
 
