@@ -1,0 +1,9 @@
+<close>
+	<!door>	Sorry, I can't access the door
+	<!window> Closing window.
+	<my>
+		<!window> Sorry, I can't access the window.
+	</>
+</>
+<open>
+	<!room>	I'm sorry

@@ -1,0 +1,78 @@
+exit	> Exit&INT|EXIT
+test 	> Succeeded.
+Hi	> Hi, Wolfger
+
+good{
+	job 	> Thank you.
+}
+
+close{
+	door 	> Sorry, I can't access the door.
+	
+	window	> Closing window.
+
+	my{
+		window	> Sorry, I can't access the window.
+	}		
+}
+open{
+	room 	> I'm sorry, I do not have permission to open the room.
+	door 	> Sorry, I can't access the door.
+	window{
+		room	> Opening window.
+	}
+	my{
+		window	> You don't have a fully automated house yet.
+		door 	> I cannot open a door without you having automation.
+	}
+	google	> Opening google.&PROC(www.google.com)|C:\Program Files (x86)\Google\Chrome\Application\Chrome
+}
+create{
+	e-mail		> Creating new e-mail.&PROC(https://mail.google.com/mail/u/0/?shva=1#inbox?compose=new)|C:\Program Files (x86)\Google\Chrome\Application\Chrome
+	document	> Creating a new document.
+}
+thank{
+	god		> I would, but I'm not really into religion. Hahaha.
+	you 		> You're welcome.
+}
+start{
+	screensaver	> Starting screensaver. &EG|AutoRemote.Message.Startscreensaver
+	listening	> Started listening.&INT|START_LISTENING
+	commandprompt	> Starting commandprompt. &PROC()|cmd.exe
+}
+stop{
+	listening	> Stopped listening.&INT|STOP_LISTENING
+}
+ping{
+	google{
+		dns		> Pinging google dns.. &PROC(8.8.8.8)|ping
+	}
+	
+}
+What{
+	does{
+		John{
+			get{
+				from{
+					the{
+						supermarket > Cornflakes.
+					}
+				}
+			}
+		}
+	}
+	is{
+		your{
+			name	> My name is, Ella.
+		}
+	}
+}
+sum{
+	of{
+		$NUMBER,NUMBER1,C:\Users\Wolfger\Documents\Visual Studio 2013\Projects\SpeechA\SpeechA\SpeechA\Resources\numbers.txt{
+						plus{
+							$NUMBER,NUMBER2,C:\Users\Wolfger\Documents\Visual Studio 2013\Projects\SpeechA\SpeechA\SpeechA\Resources\numbers.txt > The sum of *NUMBER1 plus *NUMBER2 is. &PROC(*NUMBER1,*NUMBER2)| C:\Users\Wolfger\Documents\Visual Studio 2013\Projects\SpeechA\SpeechA\SpeechA\Resources\sum
+						}
+		}
+	}
+}
